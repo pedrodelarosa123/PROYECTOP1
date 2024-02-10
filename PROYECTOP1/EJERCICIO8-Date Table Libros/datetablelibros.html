@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <title>Libros</title>
+</head>
+<body>
+    <button id="btnModal" class="btn btn-primary">
+        Lista de libros
+    </button>
+
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lista de Libros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="ListaModal">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla -->
+
+    <table class="table" id="Tabla">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Año</th>
+            <th scope="col">Numero de Paginas</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Capitulos</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    
+    <!-- Tabla -->
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'json.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    data.forEach(function(libro) {
+                        var capitulos = '';
+                        $.each(libro.Capitulos, function(capitulo, paginas){
+    capitulos = `${capitulo}: ${paginas}<br>`;
+    // Termina el bucle después de encontrar el primer capítulo
+});
+
+                        $('#Tabla tbody').append(`
+                            <tr>
+                                <td>${libro.Nombre}</td>
+                                <td>${libro.Autor}</td>
+                                <td>${libro.Año}</td>
+                                <td>${libro['Numero Paginas']}</td>
+                                <td>${libro.ISBN}</td>
+                                <td>${capitulos}</td>
+                            </tr>
+                        `);
+                    });
+                    $('#Tabla').DataTable({
+                "ordering": false, // Desactiva la funcionalidad de ordenamiento
+                "searching": false, // Desactiva la funcionalidad de búsqueda
+                "info": false,
+                "lengthChange": false,
+                "paging": false, // Desactiva la paginación
+                "pagingType": "simple" // Desactiva los botones "Previous" y "Next" y el botón con el número "1"
+
+                
+            });
+
+        },
+                error: function(xhr, status, error) {
+                    console.error('Error al obtener los datos:', error);
+                }
+            });
+        });
+    </script>
+    
+
+    </script>
+
+
+
+
+    <!-- Modal -->
+    <script>
+    $(document).ready(function() {
+    $("#btnModal").on("click", function() {
+        $.ajax({
+                url: "json.php", 
+                type: "GET",
+                dataType: "json",
+                success: function(datos) {
+                    var ListaModal = "<ul>";
+                    $.each(datos, function(index, libro) {
+                        ListaModal += "<li>" + 
+                            "Nombre: " + libro.Nombre + 
+                            " - Autor: " + libro.Autor + 
+                            " - Año: " + libro.Año + 
+                            " - Páginas: " + libro.NumeroPaginas + 
+                            " - ISBN: " + libro.ISBN + 
+                            " - Capítulos: ";
+
+                        $.each(libro.Capitulos, function(capitulo, paginas) {
+                            ListaModal += "<li>" + capitulo + ": " + paginas + "</li>";
+                        });
+                        ListaModal += "</li><br><br>";
+                    });
+                    $("#ListaModal").html(ListaModal);
+                    $("#miModal").modal("show");
+                },
+                error: function(error) {
+                    console.log("Error al cargar datos: " + JSON.stringify(error));
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

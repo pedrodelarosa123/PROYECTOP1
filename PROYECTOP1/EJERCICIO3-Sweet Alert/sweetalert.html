@@ -1,0 +1,130 @@
+<!DOCTYPE html> 
+
+<html lang="es"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Tabla de Fechas con SweetAlert</title> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
+
+    <style> 
+
+        table { 
+
+            width: 100%; 
+
+            border-collapse: collapse; 
+
+            margin-top: 20px; 
+
+        } 
+
+ 
+
+        th, td { 
+
+            border: 1px solid #dddddd; 
+
+            text-align: left; 
+
+            padding: 8px; 
+
+        } 
+
+ 
+
+        th { 
+
+            background-color: #f2f2f2; 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+ 
+
+    <h2>Tabla de Fechas con SweetAlert</h2> 
+
+     
+
+    <table> 
+
+        <thead> 
+
+            <tr> 
+
+                <th>Fecha</th> 
+
+                <th>Evento</th> 
+
+            </tr> 
+
+        </thead> 
+
+        <tbody> 
+
+            <tr> 
+
+                <td>2024-01-20</td> 
+
+                <td>Fiesta 1</td> 
+
+            </tr> 
+
+            <tr> 
+
+                <td>2024-02-15</td> 
+
+                <td>Fiesta 2</td> 
+
+            </tr> 
+
+ 
+
+        </tbody> 
+
+    </table> 
+
+ 
+
+    <button onclick="mostrarAlerta()">GUARDAR</button> 
+
+
+    <script> 
+
+        function mostrarAlerta() { 
+
+            Swal.fire({ 
+
+                title: '¡CONFIRMADO!', 
+
+                text: 'Evento Agentado.', 
+
+                icon: 'success', 
+
+                confirmButtonText: '¡Entendido!' 
+
+            }); 
+
+        } 
+
+    </script> 
+
+ 
+
+</body> 
+
+</html> 
+
+ 
+ 

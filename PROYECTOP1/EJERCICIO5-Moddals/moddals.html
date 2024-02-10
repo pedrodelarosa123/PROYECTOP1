@@ -1,0 +1,178 @@
+<!DOCTYPE html> 
+
+<html lang="es"> 
+
+<head> 
+
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <title>Tabla de Fechas con Modal de Bootstrap</title> 
+
+ 
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+
+ 
+
+    <style> 
+
+        table { 
+
+            width: 100%; 
+
+            border-collapse: collapse; 
+
+            margin-top: 20px; 
+
+        } 
+
+ 
+
+        th, td { 
+
+            border: 1px solid #dddddd; 
+
+            text-align: left; 
+
+            padding: 8px; 
+
+        } 
+
+ 
+
+        th { 
+
+            background-color: #f2f2f2; 
+
+        } 
+
+    </style> 
+
+</head> 
+
+<body> 
+
+ 
+
+    <h2>Tabla de Fechas con Modal de Bootstrap</h2> 
+
+     
+
+    <table class="table"> 
+
+        <thead> 
+
+            <tr> 
+
+                <th>Fecha</th> 
+
+                <th>Evento</th> 
+
+            </tr> 
+
+        </thead> 
+
+        <tbody> 
+
+            <tr> 
+
+                <td>2024-01-20</td> 
+
+                <td>Fiesta 1</td> 
+
+            </tr> 
+
+            <tr> 
+
+                <td>2024-02-15</td> 
+
+                <td>Fiesta 2</td> 
+
+            </tr> 
+
+          
+
+        </tbody> 
+
+    </table> 
+
+ 
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#miModal"> 
+
+        GUARDAR 
+
+    </button> 
+
+ 
+
+
+
+    <div class="modal" id="miModal"> 
+
+        <div class="modal-dialog"> 
+
+            <div class="modal-content"> 
+
+             
+
+           
+
+                <div class="modal-header"> 
+
+                    <h4 class="modal-title">Error al confirmar</h4> 
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button> 
+
+                </div> 
+
+                 
+
+
+
+                <div class="modal-body"> 
+
+                    Valide que los datos sean correctos. 
+
+                </div> 
+
+                 
+
+
+
+                <div class="modal-footer"> 
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> 
+
+                </div> 
+
+                 
+
+            </div> 
+
+        </div> 
+
+    </div> 
+
+ 
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> 
+
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+
+ 
+
+</body> 
+
+</html>
